@@ -1,0 +1,57 @@
+<div class="mx-auto">
+  <section class=" rounded shadow p-2 text-gray-800 mx-auto  font-serif">
+    <div class="container  mx-auto">
+      <div class="flex items-center">
+        <div  class=" font-bold mx-auto text-3xl text-black-300 px-5 py-2 rounded">Create Your Blog</div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<form  [formGroup]="formvalue" class="p-6 m-6 rounded shadow bg-white">
+
+  <input placeholder="Post title" formControlName="title" name="title" class="p-2 m-2" >
+  <br>
+  <p class="text-red-400 font-medium font-serif ml-3" *ngIf= "IsCheck['title'].errors" >**Title is required**</p> <br>
+
+  <textarea  placeholder="Post content" formControlName="content" name="content"  class="p-3 m-3" ></textarea><br>
+  <p class="text-red-400 font-medium font-serif ml-3" *ngIf= "IsCheck['content'].errors" >**Content is required**</p> <br>
+
+  <input type="file" name="image" id="image" class="p-2 m-2" (change)="chooseFile($event)"  >
+<button (click)="uploadImg()" class="bg-blue-500 rounded shadow p-2 text-white font-bold ml-auto">Upload Image</button>
+<br>
+
+  <button *ngIf= "showAdd" (click)="createPost()" class="flex bg-blue-800 rounded shadow p-2 text-white font-bold ml-auto">Post</button>
+  <button *ngIf= "showUpdate" (click)="updatePost()"  class="bg-blue-800 rounded shadow p-2 text-white font-bold ml-auto">Update</button>
+</form>
+
+<div *ngFor="let post of postList"  class="p-6 m-6 rounded shadow bg-white">
+
+  <div class="font-serif  p-2 " >
+    {{post.author }}
+  </div>
+
+  <div class="p-3 m-3 rounded shadow bg-white">
+    <div class="font-medium font-serif text-2xl">
+      {{post.title}}
+    </div>
+
+    <div >
+      <img [src]='post.image' class="h-20">
+    </div>
+
+    <div class="font-medium ">
+    {{post.content}}
+    </div>
+  </div>
+
+  <small>Posted by {{post.author}} &bull; on {{post.published.toDate() | date:'dd/MM/yyy' }}</small>
+
+  <div class="flex m-2">
+   <button class="bg-blue-500 rounded shadow p-2 text-white font-bold ml-auto" (click)="onEdit(post)">Edit</button>
+
+    <button class="bg-red-500 rounded shadow p-2 text-white font-bold ml-2 " (click)="delete(post.id)">Delete</button>
+  </div>
+
+</div>
+

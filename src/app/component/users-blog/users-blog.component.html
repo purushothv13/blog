@@ -1,0 +1,34 @@
+
+<div *ngFor="let item of posts"  class="p-6 m-6 rounded shadow bg-white">
+
+  <div class="font-serif text-2xl p-2 " >
+    {{item.author | lowercase}}
+  </div>
+
+  <div class="p-3 m-3 rounded shadow bg-white">
+    <div class="font-medium font-serif text-2xl">
+      {{item.title}}
+    </div>
+
+    <div >
+    {{item.image}}
+    </div>
+
+    <div class="font-medium ">
+    {{item.content}}
+    </div>
+  </div>
+
+
+
+  <small>Posted by {{item.author}} &bull; on {{item.published }}</small>
+
+  <div class="flex m-2">
+
+    <button class="bg-blue-500 rounded shadow p-2 text-white font-bold ml-2 ml-auto " routerLink="/admin">Back</button>
+
+    <button class="bg-red-500 rounded shadow p-2 text-white font-bold ml-2  " (click)="delete(item.id)">Delete</button>
+  </div>
+
+</div>
+

@@ -1,0 +1,28 @@
+  <div *ngFor="let item of posts"  class="p-6 m-6 rounded shadow bg-white">
+
+    <div class="font-serif  p-2 " >
+      {{item.author }}
+    </div>
+
+    <div class="p-3 m-3 rounded shadow bg-white">
+      <div class="font-medium font-serif text-2xl">
+        {{item.title}}
+      </div>
+
+      <div >
+        <img [src]='item.image' class="h-20">
+      </div>
+
+      <div class="font-medium ">
+      {{item.content}}
+      </div>
+    </div>
+
+
+
+    <small>Posted by {{item.author}} &bull; on {{item.published.toDate() | date:'dd/MM/yyyy'}}
+      </small>
+
+
+    </div>
+

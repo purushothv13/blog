@@ -1,0 +1,30 @@
+<nav  class="bg-indigo-500 p-2 ">
+
+    <div class="flex space-x-3 ">
+      <a  class="hover:bg-gray-800 text-white rounded-md px-3 py-2 text-sm font-medium ml-auto" aria-current="page"  routerLink="">Dashboard</a>
+
+      <div class=" text-white rounded-md px-3 py-2 text-sm font-medium  mr-auto" *ngIf="currentUser">
+        {{currentUser.displayName || currentUser.email}}
+      </div>
+
+      <ng-container *ngIf= "this.authService.isAuthenticated();then Authenticated;else notAuthenticated"></ng-container>
+
+          <ng-template #notAuthenticated>
+
+            <a  class=" hover:bg-gray-800 text-white rounded-md px-3 py-2 text-sm font-medium ml-auto" routerLink="register">Create Account</a>
+
+            <a  class=" hover:bg-gray-800 text-white rounded-md px-3 py-2 text-sm font-medium  ml-auto" routerLink="login">Login</a>
+
+          </ng-template>
+
+          <ng-template #Authenticated>
+
+          <a  class=" hover:bg-gray-800 text-white rounded-md px-3 py-2 text-sm font-medium  ml-auto"
+            routerLink="createPost">Create Blog</a>
+
+            <a  class=" hover:bg-gray-800 text-white rounded-md px-3 py-2 text-sm font-medium ml-auto" (click)="logout()">Logout</a>
+
+          </ng-template>
+    </div>
+</nav>
+

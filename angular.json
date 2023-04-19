@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/blog-firebase",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -94,8 +94,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "blog-firebase:build:production",
+            "firebaseProject": "blog-ba1ef",
+            "firebaseHostingSite": "blog-ba1ef"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "555e4272-966e-41d8-9ce3-9012afaeb8df"
   }
 }

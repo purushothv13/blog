@@ -1,0 +1,15 @@
+<h1 class="flex font-medium font-serif text-2xl text-white -mt-10">
+  Welcome Admin
+</h1>
+<div *ngIf="allUsers">
+<div *ngFor="let user of allUsers" >
+  <div *ngIf="!user.isAdmin" class="p-6 m-6 rounded shadow bg-white">
+
+    <div class=" font-serif" [routerLink]="['/usersblog',user.uid]">
+      User : {{user.displayName || user.email}}
+
+    </div>
+  </div>
+</div>
+</div>
+
